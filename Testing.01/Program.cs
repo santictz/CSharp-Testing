@@ -9,10 +9,12 @@ namespace Testing._01
     class Program
     {
         static void Main(string[] args)
-        {
 
+        {
+            AreaTriangulo();
         }
 
+        //Testing methods without return values
         static void UserDetails()
         {
             string cityName;
@@ -179,6 +181,100 @@ namespace Testing._01
             {
                 Console.WriteLine("{0} no es vocal", ch);
             }
+            Console.Read();
+        }
+        static void AreaRectangulo()
+        {
+            int area, altura, ancho;
+            Console.Write("Ingrese la altura del rectángulo:");
+            altura = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Ingrese el ancho del rectángulo:");
+            ancho = Convert.ToInt32(Console.ReadLine());
+
+            area = ancho * altura;
+
+            Console.Write("El área del rectángulo es: {0}", area);
+            Console.Read();
+        }
+        static void PotenciaCuadrado()
+        {
+            int num1, num2, cuadrado;
+            Console.WriteLine("Ingrese el primer número: ");
+            num1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Ingrese el segundo número: ");
+            num2 = Convert.ToInt32(Console.ReadLine());
+
+            if( num1 != 0 || num2 != 0)
+            {
+                cuadrado = (num1 * num1) + (num2 * num2) + (2 * num1 * num2);
+                Console.WriteLine("El resultado de ({0} + {1})2 es {2}", num1, num2, cuadrado);
+            }
+            else
+            {
+                Console.WriteLine("Usted ha ingresado un número inválido. Cancelando programa...");
+            }
+            Console.Read();
+        }
+        static void CalculatePi()
+        {
+            double PI = Math.PI;
+            Console.WriteLine("El valor de PI es {0}", PI);
+        }
+        static void AreaCirculo()
+        {
+            double r = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("El area de círculo es: {0:F2}", Math.PI + r + r); //{0:F2} formatea numericamente los resultados, en este caso le agrega fixed points, .00
+            Console.Read();
+        }
+        static void ParImpar()
+        {
+            Console.Write("Ingrese un número. Este programa lo ayudará a detectar si es par o impar");
+            int num1 = Convert.ToInt32(Console.ReadLine());
+            if(num1%2 != 0)
+            {
+                Console.WriteLine("El número {0} es impar", num1);
+            }
+            else
+            {
+                Console.WriteLine("El número {0} es par", num1);
+            }
+            Console.Read();
+        }
+        static void CalcPotencia()
+        {
+            double numBase, potencia, resultado;
+            Console.WriteLine("Ingrese el número base: ");
+            numBase = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Ingrese el expontente: ");
+            potencia = Convert.ToDouble(Console.ReadLine());
+            resultado = Math.Pow(numBase, potencia); //Método POW de clase MATH procesa la potencia, se maneja con double (double numero, double potencia)
+            Console.WriteLine("El resultado es: {0}", resultado);
+            Console.Read();
+
+            //if (potencia == 0)
+            //{
+            //    resultado = 1;
+            //    Console.WriteLine("El resultado es: {0}", resultado);
+            //}
+            //else
+            //{
+            //    for (int x = 2; x < potencia; x++)
+            //    {
+            //        numBase *= numBase;
+            //    }
+            //    Console.WriteLine("El resultado es: {0}", resultado);
+            //}
+        }
+        static void AreaTriangulo()
+        {
+            double b, h, a;
+            Console.WriteLine("Ingrese el valor de la base del triangulo: ");
+            b = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Ingrese la altura del triangulo: ");
+            h = Convert.ToDouble(Console.ReadLine());
+
+            a = (b * h) / 2;
+            Console.WriteLine("El área del triangulo es: {0}", a);
             Console.Read();
         }
     }
