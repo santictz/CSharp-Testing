@@ -11,7 +11,7 @@ namespace Testing._01
         static void Main(string[] args)
 
         {
-            AreaTriangulo();
+            CalculateTax();
         }
 
         //Testing methods without return values
@@ -275,6 +275,75 @@ namespace Testing._01
 
             a = (b * h) / 2;
             Console.WriteLine("El área del triangulo es: {0}", a);
+            Console.Read();
+        }
+        static void IfElse()
+        {
+            int num1, num2, opt;
+            double result;
+
+            label:
+
+                Console.WriteLine("Menu\n");
+                Console.WriteLine("Ingrese 1 para sumar\n");
+                Console.WriteLine("Ingrese 2 para restar\n");
+                Console.WriteLine("Ingrese 3 para multiplicación\n");
+                Console.WriteLine("Ingrese 4 para división\n");
+
+
+            Console.WriteLine("Ingrese el primer número: \n");
+            num1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Ingrese el segundo número:\n");
+            num2 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Ingrese su opción:\n");
+            opt = Convert.ToInt32(Console.ReadLine());
+
+            if( opt == 1)
+            {
+                result = num1 + num2;
+                Console.WriteLine("El resultado es {0}", result);
+            }
+            else if(opt == 2)
+            {
+                result = num1 - num2;
+                Console.WriteLine("El resultado es {0}", result);
+            }
+            else if(opt == 3)
+            {
+                result = num1 * num2;
+                Console.WriteLine("El resultado es {0}", result);
+            }
+            else if (opt == 4)
+            {
+                result = num1 / num2;
+                Console.WriteLine("El resultado es {0}", result);
+            }
+            else
+            {
+                Console.WriteLine("Opción inválida. Vuelva a ingresar su opción:\n");
+                goto label;
+            }
+            Console.Read();
+        }
+        static void CalculateTax()
+        {
+            double money, result;
+            Console.WriteLine("Ingrese el monto de dinero.\nEste programa calculará la cantidad de impuestos:\n");
+            money = Convert.ToDouble(Console.ReadLine());
+            if( money < 10000)
+            {
+                result = money + money * 5 / 100;
+            }
+            else if(money >= 10000 && money <= 100000)
+            {
+                result = money + money * 8 / 100;
+            }
+            else
+            {
+                result = money + money * 8.5 / 100;
+            }
+
+            Console.WriteLine("El resultado es {0}", result);
             Console.Read();
         }
     }
