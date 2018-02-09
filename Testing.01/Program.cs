@@ -11,7 +11,7 @@ namespace Testing._01
         static void Main(string[] args)
 
         {
-            CalculateTax();
+            Library();
         }
 
         //Testing methods without return values
@@ -345,6 +345,48 @@ namespace Testing._01
 
             Console.WriteLine("El resultado es {0}", result);
             Console.Read();
+        }
+        static void Library()
+        {
+            char option;
+            inicio:
+            Console.WriteLine("Choose an option:\nc: computer books\nm:matemathical books\nh:historybooks\ne:English books");
+            option = Convert.ToChar(Console.ReadLine());
+            option = char.ToLower(option);
+            switch (option)
+            {
+                case 'c':
+                    Console.WriteLine("This will search for all computer books");
+                    break;
+                case 'm':
+                    Console.WriteLine("This will search for all matemathical books");
+                    break;
+                case 'h':
+                    Console.WriteLine("This will search for all history books");
+                    break;
+                case 'e':
+                    Console.WriteLine("This will search for all English books");
+                    break;
+                default:
+                    Console.WriteLine("Opción inválida. Reiniciando programa...");
+                    goto inicio;
+
+            }
+            Console.ReadLine();
+
+
+        }
+        static void GoToLabel()
+        {
+            string name;
+            inicio: //This is a label that will be useful to redirect the exit of the program to this point
+
+            Console.WriteLine("Enter your name: ");
+            name = Convert.ToString(Console.ReadLine());
+
+            Console.WriteLine("Welcome, {0}", name);
+            Console.WriteLine("Press CTRL + C to exit");
+            goto inicio; //Redirect the exit to the mentioned label
         }
     }
 }
