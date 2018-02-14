@@ -11,7 +11,7 @@ namespace Testing._01
         static void Main(string[] args)
 
         {
-            Library();
+            Using();
         }
 
         //Testing methods without return values
@@ -387,6 +387,114 @@ namespace Testing._01
             Console.WriteLine("Welcome, {0}", name);
             Console.WriteLine("Press CTRL + C to exit");
             goto inicio; //Redirect the exit to the mentioned label
+        }
+        static void ContinueState()
+        {
+            int i = 0;
+            while (i < 10)
+            {
+                i++;
+                if (i < 6)
+                {
+                    continue; //Loop starts, check if i is less than 6, if that's the case, then the continue skips the loop and starts again the iteration until i > 6
+                }
+                Console.WriteLine(i);
+            }
+            Console.ReadLine();
+        }
+
+        //Functions with return value: returns value to the caller from the called function
+        public int Add(int num1, int num2)
+        {
+            return num1 + num2; //returns the add of num1 and num2
+        }
+        static void ReturnStatement()
+        {
+            Program p = new Program();
+            int result;
+            result = p.Add(3, 6); //calling the function, passing two int arguments and it will return the sum of them
+            Console.WriteLine(result);
+            Console.ReadLine();
+
+        }
+
+        //Throw and Catch exceptions
+        static void Errors()
+        {
+            int num1, num2, result;
+
+            Console.WriteLine("Enter first number:\n");
+            num1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter second number:\n");
+            num2 = Convert.ToInt32(Console.ReadLine());
+
+            try
+            {
+                if(num2 == 0)
+                {
+                    throw new Exception("Cannot divide by zero exception"); //Exception with a specific error message
+                }
+                result = num1 / num2;
+                Console.WriteLine("{0} / {1} = {2}", num1, num2, result);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Error: " + e.ToString()); //create a string representation of the exception
+            }
+            Console.ReadLine();
+        }
+
+        static void Checked()
+        {
+            int num;
+            num = int.MaxValue; //assign the maximum possible value to an int variable
+            try
+            {
+                checked //unchecked is the same but the opposite: the program will execute the sentence ignoring the issues
+                {
+                    num = num + 1; //force stack overflow exception
+                    Console.WriteLine(num);
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            Console.ReadLine();
+        }
+
+        //Lock segments
+        public void PrintName()
+        {
+            Console.WriteLine("My name is Santiago Cortez");
+        }
+        static void Lock()
+        {
+            Program p = new Program();
+            lock (p) //all the resources used in the lock segment cannot be used by another thread until it finishes.
+            {
+                p.PrintName();
+            }
+            Console.ReadLine();
+        }
+
+        //Using statement
+        static void Using()
+        {
+            using(check_using c = new check_using())
+            {
+                Console.WriteLine("Executes first"); //when you implement using, this code will be the first to execute
+            }
+            Console.WriteLine("Executes third");
+            Console.Read();
+        }
+
+    }
+    class check_using: IDisposable
+    {
+        public void Dispose()
+        {
+            Console.WriteLine("Executes second");
         }
     }
 }
